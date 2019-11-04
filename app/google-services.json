@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "711400687903",
+    "firebase_url": "https://lateorlatte-29c48.firebaseio.com",
+    "project_id": "lateorlatte-29c48",
+    "storage_bucket": "lateorlatte-29c48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711400687903:android:b52d41420a68ceaf6e882a",
+        "android_client_info": {
+          "package_name": "com.example.lateorlatte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711400687903-jv0o6n1r5uriattj0kqedkhnnejm0uml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk-6SfU99gxwiAKC_igR57h2u4ESH1dL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711400687903-jv0o6n1r5uriattj0kqedkhnnejm0uml.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

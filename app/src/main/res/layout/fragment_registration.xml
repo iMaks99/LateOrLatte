@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationFragment">
+
+    <TextView
+        android:id="@+id/registration_hello_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:text="@string/registration_hello"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/registration_phone_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:gravity="start"
+        android:text="@string/phone_number_text"
+        app:layout_constraintStart_toStartOf="@+id/registration_hello_tv"
+        app:layout_constraintTop_toBottomOf="@+id/registration_hello_tv" />
+
+    <EditText
+        android:id="@+id/registration_phone_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="@+id/registration_hello_tv"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registration_phone_tv" />
+
+    <TextView
+        android:id="@+id/registration_email_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/email_text"
+        app:layout_constraintEnd_toEndOf="@+id/registration_hello_tv"
+        app:layout_constraintStart_toStartOf="@+id/registration_hello_tv"
+        app:layout_constraintTop_toBottomOf="@+id/registration_phone_et" />
+
+    <EditText
+        android:id="@+id/registration_email_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/registration_hello_tv"
+        app:layout_constraintStart_toStartOf="@+id/registration_hello_tv"
+        app:layout_constraintTop_toBottomOf="@+id/registration_email_tv" />
+
+    <Button
+        android:id="@+id/registration_confirm_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/Submit_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/registration_email_et"
+        app:layout_constraintTop_toBottomOf="@+id/registration_email_et"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="#F44336"
+        app:layout_constraintBottom_toBottomOf="@+id/registration_phone_tv"
+        app:layout_constraintStart_toEndOf="@+id/registration_phone_tv"
+        app:layout_constraintTop_toTopOf="@+id/registration_phone_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

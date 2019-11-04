@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">LateOrLatte</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="registration_hello">Добро пожаловать в Late or Latte! Введи номер телефона или электронную почту</string>
+    <string name="phone_number_text">Номер телефона</string>
+    <string name="email_text">Электронная почта</string>
+    <string name="Submit_text">Подтвердить</string>
+    <string name="new_meeting_title">Новая встреча</string>
+    <string name="location_text">Место встечи</string>
+    <string name="show_on_map_text">Указать на карте</string>
+    <string name="create_meeting_text">Создать встречу</string>
 </resources>
