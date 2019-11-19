@@ -11,4 +11,9 @@
     <string name="location_text">Место встечи</string>
     <string name="show_on_map_text">Указать на карте</string>
     <string name="create_meeting_text">Создать встречу</string>
+    <string name="meeting_date_text">Дата встречи</string>
+    <string name="meeting_time_text">Время встречи</string>
+    <string name="new_meeting_choose_address_text">Выбрать место встречи</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="maps_search_place">Search</string>
 </resources>
