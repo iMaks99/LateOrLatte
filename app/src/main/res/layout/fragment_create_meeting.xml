@@ -179,4 +179,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_meeting_address_tv" />
 
+    <TextView
+        android:id="@+id/new_meeting_choose_on_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:padding="10dp"
+        android:text="Выбрать на карте"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_meeting_address_ev" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

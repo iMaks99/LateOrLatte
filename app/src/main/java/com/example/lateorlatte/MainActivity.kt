@@ -2,9 +2,8 @@ package com.example.lateorlatte
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,15 +16,10 @@ class MainActivity : AppCompatActivity() {
         pref = getSharedPreferences("lol", Context.MODE_PRIVATE)
 
         if (pref.getString("phone", "")!!.isEmpty())
-            showFragment(RegistrationFragment())
+            showFragment(supportFragmentManager, RegistrationFragment())
         else
-            showFragment(MenuFragment())
+            showFragment(supportFragmentManager, MenuFragment())
     }
 
-    private fun showFragment(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.main_content, fragment, fragment.javaClass.simpleName)
-            .commit()
-    }
+
 }
