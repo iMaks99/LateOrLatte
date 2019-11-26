@@ -106,7 +106,7 @@ class CreateMeetingFragment : Fragment() {
                     .addOnSuccessListener { querySnapshot ->
                         if (!querySnapshot.isEmpty) {
                             val v = LayoutInflater.from(context)
-                                .inflate(R.layout.new_meeting_chip, participantCh, false)
+                                .inflate(R.layout.meeting_participant_create_chip, participantCh, false)
                             val chip = v.findViewById<Chip>(R.id.new_meeting_chip)
                             chip.text = participant
                             chip.isClickable = true

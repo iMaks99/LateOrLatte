@@ -23,6 +23,7 @@ class MeetingsFragment : Fragment() {
     private lateinit var db: FirebaseFirestore
     private var meetingsTemp: ArrayList<Meeting> = ArrayList()
     private var meetings: List<Meeting>? = null
+    private lateinit var adapter: MeetingsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +43,7 @@ class MeetingsFragment : Fragment() {
         db.collection(Meeting::class.java.simpleName)
             .get()
             .addOnSuccessListener {
+                meetingsTemp.clear()
                 for (i in it.documents)
                     meetingsTemp.add(i.toObject(Meeting::class.java)!!)
 
@@ -51,14 +53,12 @@ class MeetingsFragment : Fragment() {
                 }
 
                 if (meetings != null) {
-                    val adapter = MeetingsAdapter(meetings!!)
+                    adapter = MeetingsAdapter(meetings!!)
                     view.findViewById<RecyclerView>(R.id.meeting_rv).adapter = adapter
                 }
             }
             .addOnFailureListener {
                 Log.w(this::class.java.name, it.localizedMessage!!)
             }
-
-
     }
 }
