@@ -14,7 +14,10 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
 
-class TrackingParticipantsAdapter(var participants: List<User>, var meetingLocation: GeoPoint) :
+class TrackingParticipantsAdapter(
+    var participants: HashMap<String, User>,
+    var meetingLocation: GeoPoint
+) :
     RecyclerView.Adapter<TrackingParticipantsAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -43,13 +46,15 @@ class TrackingParticipantsAdapter(var participants: List<User>, var meetingLocat
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         if (participants.size > position) {
-            holder.username.text = participants[position].phone
-            /*    holder.dist.text = distance(
-            participants[position].location!!.latitude,
-            participants[position].location!!.longitude,
-            meetingLocation.latitude,
-            meetingLocation.longitude
-        ) */
+            holder.username.text = participants.values.toList()[position].phone
+
+            if (participants.values.toList()[position].location != null)
+                holder.dist.text = distance(
+                    participants.values.toList()[position].location!!.latitude,
+                    participants.values.toList()[position].location!!.longitude,
+                    meetingLocation.latitude,
+                    meetingLocation.longitude
+                )
         }
     }
 

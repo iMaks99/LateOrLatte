@@ -9,6 +9,7 @@ import java.util.*
 data class Meeting(
     var address: String? = null,
     var location: GeoPoint? = null,
+    var creatorId: String? = null,
     var creator: String? = null,
     var date: Date? = null,
     var time: Date? = null,
@@ -20,6 +21,7 @@ data class Meeting(
         parcel.readString(),
         GeoPoint(parcel.readDouble(), parcel.readDouble()),
         parcel.readString(),
+        parcel.readString(),
         parcel.readSerializable() as Date?,
         parcel.readSerializable() as Date?,
         parcel.createStringArrayList()
@@ -29,6 +31,7 @@ data class Meeting(
         parcel.writeString(address)
         parcel.writeDouble(location!!.latitude)
         parcel.writeDouble(location!!.longitude)
+        parcel.writeString(creatorId)
         parcel.writeString(creator)
         parcel.writeSerializable(date)
         parcel.writeSerializable(time)

@@ -185,6 +185,7 @@ class CreateMeetingFragment : Fragment() {
                 val meeting = Meeting(
                     address.text.toString(),
                     GeoPoint(location.latitude, location.longitude),
+                    creator!!.id,
                     creator!!.phone,
                     SimpleDateFormat("dd.MM.yyyy").parse(date.text.toString()),
                     SimpleDateFormat("HH:mm").parse(time.text.toString()),

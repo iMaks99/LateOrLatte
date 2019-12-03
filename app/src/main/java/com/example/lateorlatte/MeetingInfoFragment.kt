@@ -11,7 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.lateorlatte.dto.Meeting
+import com.example.lateorlatte.dto.User
 import com.google.android.material.chip.Chip
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_event_info.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,6 +23,7 @@ import java.util.*
  */
 class MeetingInfoFragment : Fragment() {
 
+    private lateinit var db: FirebaseFirestore
     private lateinit var pref: SharedPreferences
     private var meeting: Meeting? = null
 
@@ -74,12 +77,19 @@ class MeetingInfoFragment : Fragment() {
             meeting_place_tv.text = meeting!!.address
 
             meeting_go_btn.setOnClickListener {
+
                 val intent = Intent(activity, TrackingMapActivity::class.java)
                 intent.putExtra("meeting", meeting!!)
-          //      intent.putExtra("meetingAddress", meeting!!)
-        /*        intent.putExtra("meetingLocLat", meeting!!.location!!.latitude)
-                intent.putExtra("meetingLocLong", meeting!!.location!!.longitude)*/
-                startActivity(intent)
+
+                db = FirebaseFirestore.getInstance()
+                db.collection(User::class.java.simpleName)
+                    .whereEqualTo("phone", pref.getString("phone", ""))
+                    .get()
+                    .addOnSuccessListener {
+                        meeting!!.creatorId = it.documents[0].id
+                        startActivity(intent)
+                    }
+
             }
         }
     }
