@@ -2,7 +2,6 @@ package com.example.lateorlatte
 
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
@@ -11,7 +10,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -22,6 +20,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
+import pub.devrel.easypermissions.EasyPermissions
 import java.io.IOException
 
 
@@ -131,27 +130,39 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
+    }
+
+
     private fun setUpMap() {
-        if (ActivityCompat.checkSelfPermission(
+        val perms = android.Manifest.permission.ACCESS_FINE_LOCATION
+
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            mMap.isMyLocationEnabled = true
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    lastLocation = location
+                    val currentLatLng = LatLng(location.latitude, location.longitude)
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
+                }
+            }
+        } else {
+            EasyPermissions.requestPermissions(
                 this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                LOCATION_PERMISSION_REQUEST_CODE
+                android.Manifest.permission.ACCESS_FINE_LOCATION,
+                LOCATION_PERMISSION_REQUEST_CODE,
+                perms
             )
         }
 
-        mMap.isMyLocationEnabled = true
-        fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-            if (location != null) {
-                lastLocation = location
-                val currentLatLng = LatLng(location.latitude, location.longitude)
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
-            }
-        }
+
     }
 
 }

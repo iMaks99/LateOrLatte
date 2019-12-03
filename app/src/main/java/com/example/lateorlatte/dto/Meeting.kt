@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.firebase.firestore.GeoPoint
-import java.text.SimpleDateFormat
 import java.util.*
 
 data class Meeting(
@@ -21,9 +20,9 @@ data class Meeting(
         parcel.readString(),
         GeoPoint(parcel.readDouble(), parcel.readDouble()),
         parcel.readString(),
-        SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).parse(parcel.readString()!!),
-        SimpleDateFormat("HH:mm", Locale.getDefault()).parse(parcel.readString()!!),
-        arrayListOf<String>().apply { parcel.readArrayList(String::class.java.classLoader) }
+        parcel.readSerializable() as Date?,
+        parcel.readSerializable() as Date?,
+        parcel.createStringArrayList()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -31,9 +30,9 @@ data class Meeting(
         parcel.writeDouble(location!!.latitude)
         parcel.writeDouble(location!!.longitude)
         parcel.writeString(creator)
-        parcel.writeString(date.toString())
-        parcel.writeString(time.toString())
-        parcel.writeList(participant!! as List<*>?)
+        parcel.writeSerializable(date)
+        parcel.writeSerializable(time)
+        parcel.writeStringList(participant!!)
     }
 
     override fun describeContents(): Int {

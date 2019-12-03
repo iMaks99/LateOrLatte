@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrackingMapActivity">
+
+    <fragment
+        android:id="@+id/tracking_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include layout="@layout/tracking_bottom_sheet"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/tackingParticipantFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:tint="@android:color/white"
+        app:fabSize="normal"
+        app:layout_anchor="@id/tracking_bsh"
+        app:layout_anchorGravity="top|center_horizontal"
+        app:rippleColor="@android:color/white"
+        app:srcCompat="@drawable/ic_show_list" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

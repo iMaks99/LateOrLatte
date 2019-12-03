@@ -3,6 +3,7 @@ package com.example.lateorlatte
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -53,8 +54,6 @@ class MeetingInfoFragment : Fragment() {
 
             meeting_organizer_chip.text = meeting!!.creator
 
-
-
             for (item in meeting!!.participant!!) {
                 val v = LayoutInflater.from(context)
                     .inflate(
@@ -73,6 +72,15 @@ class MeetingInfoFragment : Fragment() {
                         SimpleDateFormat("HH:mm", Locale.getDefault()).format(meeting!!.time!!)
 
             meeting_place_tv.text = meeting!!.address
+
+            meeting_go_btn.setOnClickListener {
+                val intent = Intent(activity, TrackingMapActivity::class.java)
+                intent.putExtra("meeting", meeting!!)
+          //      intent.putExtra("meetingAddress", meeting!!)
+        /*        intent.putExtra("meetingLocLat", meeting!!.location!!.latitude)
+                intent.putExtra("meetingLocLong", meeting!!.location!!.longitude)*/
+                startActivity(intent)
+            }
         }
     }
 }
