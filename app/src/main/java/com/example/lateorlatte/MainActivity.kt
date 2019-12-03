@@ -1,6 +1,7 @@
 package com.example.lateorlatte
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,12 +14,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        pref = getSharedPreferences("lol", Context.MODE_PRIVATE)
+//        pref = getSharedPreferences("lol", Context.MODE_PRIVATE)
+//
+//        if (pref.getString("phone", "")!!.isEmpty())
+//            showFragment(supportFragmentManager, RegistrationFragment())
+//        else
+//            showFragment(supportFragmentManager, MenuFragment())
 
-        if (pref.getString("phone", "")!!.isEmpty())
-            showFragment(supportFragmentManager, RegistrationFragment())
-        else
-            showFragment(supportFragmentManager, MenuFragment())
+        val intent = Intent(this, PartnersMapActivity::class.java)
+        startActivity(intent)
     }
 
 
