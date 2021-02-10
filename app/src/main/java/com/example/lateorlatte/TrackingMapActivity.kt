@@ -106,7 +106,7 @@ class TrackingMapActivity : AppCompatActivity(), OnMapReadyCallback {
         val phones = meeting.participant
         phones!!.add(meeting.creator!!)
 
-        adapter = TrackingParticipantsAdapter(participants, meeting.location!!)
+        adapter = TrackingParticipantsAdapter(participants, meeting)
         tracking_part_rv.adapter = adapter
 
         for (p in phones) {
@@ -134,11 +134,11 @@ class TrackingMapActivity : AppCompatActivity(), OnMapReadyCallback {
                     for (item in it) {
                         val temp = item.toObject(User::class.java).withId<User>(item.id)
 
-                        if (temp.location != null) {
-                            if (!markers.containsKey(temp.id))
+                        if (temp.location != null && (temp.id) != null) {
+                            if (!markers.containsKey(temp.id!!))
                                 placeMarketOnMap(
                                     LatLng(temp.location!!.latitude, temp.location!!.longitude),
-                                    temp.name!!, temp.id!!
+                                    temp.name ?: "", temp.id!!
                                 )
                             else
                                 markers[item.id]!!.position =
@@ -180,7 +180,6 @@ class TrackingMapActivity : AppCompatActivity(), OnMapReadyCallback {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {}
         })
     }
-
 
     private fun placeMarketOnMap(location: LatLng, title: String, id: String) {
         val markerOptions = MarkerOptions().position(location)

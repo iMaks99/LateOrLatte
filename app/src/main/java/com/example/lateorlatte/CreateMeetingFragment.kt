@@ -147,7 +147,7 @@ class CreateMeetingFragment : Fragment() {
             val year = c.get(Calendar.YEAR)
 
             val dpd = DatePickerDialog(view.context, OnDateSetListener { _, y, m, d ->
-                date.setText("$d.$m.$y")
+                date.setText("$d.${m + 1}.$y")
             }, year, month, day)
 
             dpd.show()
